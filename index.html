@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="description" content="Dust Signal: an isometric post-apocalyptic wasteland rendered entirely in ASCII characters. Reboot five radio relays before the dust storm swallows the basin." />
+    <meta name="theme-color" content="#07080c" />
+    <title>Dust Signal</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%2307080c'/%3E%3Ctext x='32' y='46' font-family='monospace' font-size='44' text-anchor='middle' fill='%23e8b860'%3E%25%3C/text%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <canvas id="view"></canvas>
+
+    <div id="hud" class="hidden">
+      <div class="hud-tl">
+        <div class="h-title">DUST SIGNAL</div>
+        <div class="h-sub" id="h-region">ASHFALL BASIN · NIGHT</div>
+      </div>
+      <div class="hud-tc">
+        <div class="h-label">STORM WALL</div>
+        <div class="h-storm" id="h-storm">09:00</div>
+        <div class="h-stormbar" id="h-stormbar"></div>
+      </div>
+      <div class="hud-tr">
+        <div class="h-label" id="h-objlabel">RELAYS</div>
+        <div class="h-count" id="h-count">0 / 5</div>
+        <div class="h-hint" id="h-hint">Follow the static.</div>
+        <div class="h-compass"><span class="h-arrow" id="h-arrow">↑</span><span class="h-dist" id="h-dist">0m</span></div>
+      </div>
+      <pre class="hud-bl" id="h-vitals"></pre>
+      <pre class="hud-br" id="h-weapon"></pre>
+      <div class="hud-radio" id="h-radio"></div>
+      <div class="hud-keys" id="h-keys">WASD move · SHIFT run · SPACE / CLICK fire · E hold to interact · M map · ESC pause</div>
+    </div>
+
+    <div id="title" class="screen">
+      <div class="t-spacer"></div>
+      <div class="t-tag">A WASTELAND MADE OF CHARACTERS</div>
+      <div class="t-story">
+        The ash came and the basin went quiet. Five relays on the dust band are dark.<br />
+        Wake them, reach Tower Nine, and push one signal past the storm wall.
+      </div>
+      <label class="t-call">CALLSIGN <input id="callsign" maxlength="12" spellcheck="false" autocomplete="off" /></label>
+      <button class="t-start" id="start">[ PRESS ENTER TO DESCEND ]</button>
+      <div class="t-keys">
+        <span><b>WASD</b> move</span><span><b>SHIFT</b> run</span><span><b>SPACE / CLICK</b> fire</span><span><b>E</b> hold to interact</span>
+        <span><b>M</b> map</span><span><b>[ ]</b> glyph size</span><span><b>WHEEL</b> zoom</span><span><b>N</b> sound</span>
+      </div>
+    </div>
+
+    <div id="pause" class="screen hidden">
+      <div class="s-head">PAUSED</div>
+      <div class="s-body">
+        <div class="t-keys col">
+          <span><b>WASD / ARROWS</b> move</span>
+          <span><b>SHIFT</b> run (uses stamina)</span>
+          <span><b>SPACE / LEFT CLICK</b> fire toward the cursor or where you face</span>
+          <span><b>E</b> hold to reboot relays and transmit</span>
+          <span><b>M</b> map</span>
+          <span><b>[ ]</b> glyph density: <i id="p-density">NORMAL</i></span>
+          <span><b>WHEEL</b> zoom</span>
+          <span><b>N</b> sound: <i id="p-sound">ON</i></span>
+          <span><b>G</b> shape glyphs: <i id="p-shape">ON</i></span>
+        </div>
+        <div class="s-hint">ESC to resume · R to restart</div>
+      </div>
+    </div>
+
+    <div id="end" class="screen hidden">
+      <div class="s-head" id="e-head">SIGNAL LOST</div>
+      <div class="s-sub" id="e-sub"></div>
+      <pre class="s-stats" id="e-stats"></pre>
+      <div class="s-hint">PRESS ENTER TO WALK THE BASIN AGAIN</div>
+    </div>
+
+    <pre id="map" class="hidden"></pre>
+
+    <div id="touch" class="hidden">
+      <div class="stick" id="stick"><div class="knob" id="knob"></div></div>
+      <button class="tbtn fire" id="t-fire">✦</button>
+      <button class="tbtn use" id="t-use">E</button>
+      <button class="tbtn run" id="t-run">»</button>
+      <button class="tbtn small map" id="t-map">M</button>
+      <button class="tbtn small pause" id="t-pause">II</button>
+    </div>
+
+    <div id="boot">TUNING…</div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

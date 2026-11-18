@@ -1,0 +1,23 @@
+{
+  "name": "dust-signal",
+  "private": true,
+  "version": "1.0.0",
+  "description": "An isometric post-apocalyptic wasteland game rendered entirely in ASCII characters (WebGL).",
+  "type": "module",
+  "license": "Apache-2.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.3.0",
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.187.0",
+    "typescript": "~5.9.3",
+    "vite": "^5.4.21"
+  }
+}
